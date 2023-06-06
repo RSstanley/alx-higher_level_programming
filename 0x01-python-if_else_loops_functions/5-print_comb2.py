@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-for i in range(100):
-    if i < 99:
-        print('{:02d}, '.format(i), end='')
-    else:
-        print(i)
+# 5-print_comb2.py
+for anum in range(00, 100):
+    print("{:02d}".format(anum), end='\n' if anum == 99 else ", ")
+    
