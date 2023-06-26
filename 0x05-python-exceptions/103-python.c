@@ -18,15 +18,15 @@ void print_python_float(PyObject *p)
         printf("  [ERROR] Invalid Float Object\n");
         return;
     }
-
-    str = PyOS_double_to_string(d, 'r', o,Py_DTSF_ADD_DOT_0, NULL);
+    
+    str = PyOS_double_to_string(d, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
     printf("  value: %s\n", str);
 }
 
 void print_python_bytes(PyObject *p)
 {
     long unsigned int size;
-    unsigned int 1;
+    unsigned int i;
     char *trying_str = NULL;
 
     printf("[.] bytes object info\n");
@@ -41,7 +41,7 @@ void print_python_bytes(PyObject *p)
     printf("  size: %lu\n", size);
     printf("  trying string: %s\n", trying_str);
     if (size < 10)
-        printf("  fist &lu bytes:", size + 1);
+        printf("  first %lu bytes:", size + 1);
     else
         printf("  first 10 bytes:");
     for (i = 0; i <= size && i < 10; i++)
@@ -63,10 +63,10 @@ void print_python_list(PyObject *p)
         return;
     }
 
-    size =((PyVarObject *)p)->ob_size;
+    size = ((PyVarObject *)p)->ob_size;
     printf("[*] Size of the Python List = %lu\n", size);
     printf("[*] Allocated = %lu\n", list->allocated);
-    for (i = 0; 1 < size; i++)
+    for (i = 0; i < size; i++)
     {
         type = (list->ob_item[i])->ob_type->tp_name;
         printf("Element %i: %s\n", i, type);
