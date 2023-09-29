@@ -1,23 +1,19 @@
 #!/usr/bin/python3
-"""Takes in a letter
-- sends POST request to http://0.0.0.0:5000/search_user
-with the letter as a parameter.
-Eg: ./8-json_api.py <letter>
-"""
+"""Write a Python script that takes in a letter and..."""
 import sys
 import requests
 
 
 if __name__ == "__main__":
-    letter = "" if len(sys.argv) == 1 else sys.argv[1]
-    payload = {"q": letter}
-    
-    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
+    mylttr = "" if len(sys.argv) == 1 else sys.argv[1]
+    dt_pyld = {"q": mylttr}
+
+    results = requests.post("http://0.0.0.0:5000/search_user", data=dt_pyld)
     try:
-        response = r.json()
-        if response == {}:
+        rspn = results.json()
+        if rspn == {}:
             print("No result")
-        else: 
-            print("[{}] {}".format(response.get("id"), response.get("name")))
+        else:
+            print("[{}] {}".format(rspn.get("id"), rspn.get("name")))
     except ValueError:
         print("Not a valid JSON")
