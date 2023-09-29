@@ -2,7 +2,6 @@
 """A python script that fetches data"""
 import urllib.request
 
-
 if __name__ == "__main__":
     the_request = urllib.request.Request("https://intranet.hbtn.io/status")
     with urllib.request.urlopen(the_request) as results:
